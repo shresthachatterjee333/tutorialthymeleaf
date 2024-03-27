@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Tutorial List</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Include Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Include custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <i class="fas fa-book"></i> Tutorial Management
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container mt-3">
+    <h2><i class="fas fa-list"></i> Tutorial List</h2>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Published</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="tutorial : ${tutorials}">
+            <td th:text="${tutorial.id}"></td>
+            <td th:text="${tutorial.title}"></td>
+            <td th:text="${tutorial.description}"></td>
+            <td>
+                <span th:if="${tutorial.published}" class="text-success"><i class="fas fa-check-circle"></i></span>
+                <span th:unless="${tutorial.published}" class="text-danger"><i class="fas fa-times-circle"></i></span>
+            </td>
+            <td>
+                <a th:href="@{/tutorialsman/edit/{id}(id=${tutorial.id})}" class="btn btn-info"><i class="fas fa-edit"></i> Edit</a>
+                <a th:href="@{/tutorialsman/delete/{id}(id=${tutorial.id})}" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <a th:href="@{/tutorialsman/signup}" class="btn btn-success"><i class="fas fa-plus"></i> Add Tutorial</a>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

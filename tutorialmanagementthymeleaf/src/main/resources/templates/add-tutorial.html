@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add Tutorial</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Include Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Include custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <i class="fas fa-book"></i> Tutorial Management
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container mt-3">
+    <h2><i class="fas fa-plus-circle"></i> Add Tutorial</h2>
+    <form th:action="@{/tutorialsman/add}" method="post">
+        <div class="form-group">
+            <label for="title"><i class="fas fa-heading"></i> Title:</label>
+            <input type="text" class="form-control" id="title" placeholder="Enter title" name="title">
+        </div>
+        <div class="form-group">
+            <label for="description"><i class="fas fa-file-alt"></i> Description:</label>
+            <textarea class="form-control" id="description" placeholder="Enter description"
+                      name="description"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="published"><i class="fas fa-check"></i> Published:</label>
+            <input type="checkbox" id="published" name="published" value="true">
+            <label for="published" class="ml-1">Yes</label>
+        </div>
+        <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Submit</button>
+    </form>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
